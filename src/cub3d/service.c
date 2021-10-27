@@ -26,6 +26,7 @@ int	init_map(t_map **map)
 
 void	ft_err(char *message)
 {
+	printf("Error\n");
 	printf("%s\n", message);
 	exit(1);
 }
@@ -36,7 +37,7 @@ int	check_open(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		ft_err("Error open file, bad path");
+		ft_err("Open file, bad path");
 	close(fd);
 	return (1);
 }

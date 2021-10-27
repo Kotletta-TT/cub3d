@@ -31,9 +31,15 @@ void	free_arr(char **name)
 {
 	int	i;
 
+	if (!name)
+		return ;
 	i = -1;
 	while (name[++i])
+	{
+		printf("CLEAN str: %s\n", name[i]);
+		printf("CLEAN i: %d\n", i);
 		free(name[i]);
+	}
 	free(name);
 }
 
@@ -41,7 +47,7 @@ void	open_file(char *path, int *fd)
 {
 	*fd = open(path, O_RDONLY);
 	if (*fd < 0)
-		ft_err("Error open file");
+		ft_err("Open file");
 }
 
 void	parse_string(t_map *map, char *line, int *status)
@@ -91,7 +97,10 @@ int	parse_map(t_map *map, char *path)
 		free(line);
 		i = get_next_line(fd, &line);
 	}
+	parse_string(map, line, &status);
 	printf("i = %d, s = |%s|\n", i, line);
 	free(line);
+	if ((status & START) != START)
+		ft_err("File empty or not valid");
 	return (1);
 }

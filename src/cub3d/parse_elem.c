@@ -77,7 +77,7 @@ char	**init_names(void)
 		if (!name[i])
 		{
 			free_arr(name);
-			ft_err("Malloc Err");
+			ft_err("Malloc");
 		}
 	}
 	return (name);

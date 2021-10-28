@@ -35,7 +35,23 @@ void	valid_str_map(t_map *map, char *line, int *status)
 	tmp[i] = 0;
 	map->map_cub_size += 1;
 	printf("%d\n", map->map_cub_size);
-	free_arr(map->map);
+	free(map->map);
 	map->map = tmp;
 	printf("valid str map");
+}
+
+int	valid_map(t_map *map)
+{
+	int	i;
+	int	k;
+
+	i = -1;
+	while (map->map[++i])
+	{
+		k = 0;
+		while(map->map[i][k])
+		{
+			
+		}
+	}
 }

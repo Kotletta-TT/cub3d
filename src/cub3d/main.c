@@ -24,6 +24,5 @@ int	main(int ac, char **av)
 	if (!(init_map(&map)) || !(check_ext(av[1], ".cub")) || !(parse_map(map,
 				av[1])) || !(valid_map(map)))
 		ft_err("Parser error");
-	
 	return (0);
 }

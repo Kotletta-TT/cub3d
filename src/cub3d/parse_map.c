@@ -33,10 +33,8 @@ void	valid_str_map(t_map *map, char *line, int *status)
 	tmp[i++] = ft_strdup(line);
 	tmp[i] = 0;
 	map->player_dir += 1;
-	printf("%d\n", map->player_dir);
 	free(map->map);
 	map->map = tmp;
-	printf("valid str map");
 }
 
 void	check_outer_borders(char **map)
@@ -88,21 +86,21 @@ void	check_correct_pos(char **map, int x, int y)
 {
 	int	prev_len;
 	int	next_len;
+	int	pos;
 
+	pos = ft_strlen(map[y]) - (ft_strlen(map[y]) - x);
 	prev_len = ft_strlen(map[y - 1]);
 	next_len = ft_strlen(map[y + 1]);
-	if (x <= prev_len || x <= next_len)
-	{
-		printf("y:%d x:%d", x, y);
+	if (pos >= prev_len || pos >= next_len)
 		ft_err("Map not closed");
-	}
 	if (map[y - 1][x - 1] == ' ' || map[y - 1][x] == ' ' || map[y - 1][x + 1]
 	 == ' ' || map[y][x - 1] == ' ' || map[y][x + 1] == ' ' || map[y + 1]
 	[x - 1] == ' ' || map[y + 1][x] == ' ' || map[y + 1][x + 1] == ' ')
-	{
-		printf("y:%d x:%d", x, y);
 		ft_err("Map not closed");
-	}
+	if (map[y - 1][x - 1] == '\0' || map[y - 1][x] == '\0' || map[y - 1][x + 1]
+	 == '\0' || map[y][x - 1] == '\0' || map[y][x + 1] == '\0' || map[y + 1]
+	[x - 1] == '\0' || map[y + 1][x] == '\0' || map[y + 1][x + 1] == '\0')
+		ft_err("Map not closed");
 }
 
 void	get_player_pos(t_map *map, int x, int y, char dir)
@@ -135,13 +133,12 @@ void	check_player_availability(t_map *map)
 		while (map->map[y][++x])
 		{
 			if (ft_strchr(player_type, map->map[y][x]))
-				{
-					check_correct_pos(map->map, x, y);
-					get_player_pos(map, x, y,  map->map[y][x]);
-					return ;
-				}
+			{
+				check_correct_pos(map->map, x, y);
+				get_player_pos(map, x, y,  map->map[y][x]);
+				return ;
+			}
 		}
-		
 	}
 	free(player_type);
 	ft_err("No player in map");
@@ -171,12 +168,4 @@ int	valid_map(t_map *map)
 	check_player_availability(map);
 	check_zeroes(map->map);
 	return(1);
-	// while (map->map[++i])
-	// {
-	// 	k = 0;
-	// 	while(map->map[i][k])
-	// 	{
-			
-	// 	}
-	// }
 }

@@ -35,11 +35,7 @@ void	free_arr(char **name)
 		return ;
 	i = -1;
 	while (name[++i])
-	{
-		printf("CLEAN str: %s\n", name[i]);
-		printf("CLEAN i: %d\n", i);
 		free(name[i]);
-	}
 	free(name);
 }
 
@@ -89,16 +85,13 @@ int	parse_map(t_map *map, char *path)
 	line = 0;
 	open_file(path, &fd);
 	i = get_next_line(fd, &line);
-	/* TODO: Check empty map */
 	while (i > 0)
 	{
 		parse_string(map, line, &status);
-		printf("i = %d, s = |%s|\n", i, line);
 		free(line);
 		i = get_next_line(fd, &line);
 	}
 	parse_string(map, line, &status);
-	printf("i = %d, s = |%s|\n", i, line);
 	free(line);
 	if ((status & START) != START)
 		ft_err("File empty or not valid");

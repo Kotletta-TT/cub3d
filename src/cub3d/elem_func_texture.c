@@ -16,7 +16,6 @@
 
 void	no_func(t_map *map, int *status, char *path)
 {
-	printf("no_func");
 	if ((*status & NORTH) == NORTH)
 		ft_err("Parse error duplicate element");
 	*status = *status | NORTH;
@@ -26,7 +25,6 @@ void	no_func(t_map *map, int *status, char *path)
 
 void	ea_func(t_map *map, int *status, char *path)
 {
-	printf("ea_func");
 	if ((*status & EAST) == EAST)
 		ft_err("Parse error duplicate element");
 	*status = *status | EAST;
@@ -36,7 +34,6 @@ void	ea_func(t_map *map, int *status, char *path)
 
 void	we_func(t_map *map, int *status, char *path)
 {
-	printf("we_func");
 	if ((*status & WEST) == WEST)
 		ft_err("Parse error duplicate element");
 	*status = *status | WEST;
@@ -46,7 +43,6 @@ void	we_func(t_map *map, int *status, char *path)
 
 void	so_func(t_map *map, int *status, char *path)
 {
-	printf("so_func");
 	if ((*status & SOUTH) == SOUTH)
 		ft_err("Parse error duplicate element");
 	*status = *status | SOUTH;

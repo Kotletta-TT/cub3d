@@ -12,6 +12,7 @@ SRCS		=	$(SRC_DIR)/parse.c				\
 				$(SRC_DIR)/elem_func_texture.c	\
 				$(SRC_DIR)/parse_map.c			\
 				$(SRC_DIR)/parse_elem.c			\
+				$(SRC_DIR)/parse_map_check.c	\
 				$(SRC_DIR)/main.c
 				
 

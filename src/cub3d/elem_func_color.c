@@ -44,7 +44,6 @@ int	valid_color(char *str)
 
 void	floor_func(t_map *map, int *status, char *path)
 {
-	printf("floor_func");
 	if ((*status & FLOOR) == FLOOR)
 		ft_err("Parse error duplicate element");
 	*status = *status | FLOOR;
@@ -53,7 +52,6 @@ void	floor_func(t_map *map, int *status, char *path)
 
 void	ceil_func(t_map *map, int *status, char *path)
 {
-	printf("ceil_func");
 	if ((*status & CEILING) == CEILING)
 		ft_err("Parse error duplicate element");
 	*status = *status | CEILING;

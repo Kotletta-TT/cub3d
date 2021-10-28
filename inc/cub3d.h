@@ -12,10 +12,9 @@ typedef struct s_resources
 typedef struct s_map
 {
     char        **map;
-    int         map_size[2];
-    int         map_cub_size;
-    int         player_pos[2];
-    int         pva;
+    int         size[2];
+    int         player[2];
+    int         player_dir;
     t_resources resources;
 }   t_map;
 typedef struct s_arr_func
@@ -52,6 +51,7 @@ void	    parse_string(t_map *map, char *line, int *status);
 char	    **init_names(void);
 void	    valid_elem_str(t_map *map, char *line, int *status);
 void	    free_names(char **name);
+int			valid_map(t_map *map);
 #endif
 
 

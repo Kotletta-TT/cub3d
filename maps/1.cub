@@ -1,7 +1,7 @@
-NO ./textures/no
-SO ./textures/so
-WE ./textures/we
-EA ./textures/ea
+NO ./textures/mramor.xpm
+SO ./textures/derevo.xpm
+WE ./textures/glassfacete.xpm
+EA ./textures/kirpich.xpm
 
 F 220,100,0
 C 225,30,0

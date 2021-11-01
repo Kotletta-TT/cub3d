@@ -2,27 +2,36 @@ NAME		=	cub3d
 
 INCLUDE_DIR	=	inc
 
-HEADER		=	$(INCLUDE_DIR)/cub3d.h
+INCS		=	render.h parse.h events.h settings.h map.h events.h
+
+HEADER		=	$(addprefix $(INCLUDE_DIR)/, $(INCS))
 
 SRC_DIR		=	src/cub3d
 
-SRCS		=	$(SRC_DIR)/parse.c				\
-				$(SRC_DIR)/service.c			\
-				$(SRC_DIR)/elem_func_color.c	\
-				$(SRC_DIR)/elem_func_texture.c	\
-				$(SRC_DIR)/parse_map.c			\
-				$(SRC_DIR)/parse_elem.c			\
-				$(SRC_DIR)/parse_map_check.c	\
-				$(SRC_DIR)/main.c
-				
+CFILES		=	parse.c				\
+				service.c			\
+				elem_func_color.c	\
+				elem_func_texture.c	\
+				parse_map.c			\
+				parse_elem.c		\
+				parse_map_check.c	\
+				start.c				\
+				init.c				\
+				cast.c				\
+				draw.c				\
+				events.c			\
+				utils.c				\
+				main.c
 
+SRCS		=	$(addprefix $(SRC_DIR)/, $(CFILES))
+				
 OBJS_DIR	=	objects/cub3d/
 
-# MLX_FLAGS	=	-framework OpenGL -framework AppKit -lmlx
+MLX_FLAGS	=	-framework OpenGL -framework AppKit -lmlx
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -O3
 
 RM			=	rm -f
 
@@ -36,9 +45,9 @@ GNL_DIR		=	src/gnl
 
 GNL			=	libgnl.a
 
-# MLX_DIR		=	src/mlx
+MLX_DIR		=	src/mlx
 
-# MLX			=	libmlx.a
+MLX			=	libmlx.a
 
 
 $(OBJS_DIR)%.o:		%.c $(HEADER)
@@ -53,12 +62,11 @@ $(GNL):
 $(LIBFT):
 					@make -C $(LIBFT_DIR)
 
+$(MLX):
+					@make -C $(MLX_DIR)
 
-# $(MLX):
-# 					@make -C $(MLX_DIR)
-
-$(NAME):			$(GNL) $(LIBFT) $(OBJS) $(HEADER)# $(MLX)
-					@$(CC) $(OBJS) -I $(INCLUDE_DIR) -lft -lgnl -L. -o $(NAME)
+$(NAME):			$(GNL) $(LIBFT) $(OBJS) $(HEADER) $(MLX)
+					@$(CC) $(OBJS) -I $(INCLUDE_DIR) $(MLX_FLAGS) -lft -lgnl -L. -o $(NAME)
 
 clean:
 					@make clean -C $(LIBFT_DIR)

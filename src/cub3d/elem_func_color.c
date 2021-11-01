@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elem_func.c                                        :+:      :+:    :+:   */
+/*   elem_func_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarson <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 15:52:52 by aarson            #+#    #+#             */
-/*   Updated: 2021/10/24 15:52:53 by aarson           ###   ########.fr       */
+/*   Updated: 2021/11/01 12:21:22 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// #include "cub3d.h"
 #include "get_next_line.h"
+#include "parse.h"
 #include "libft.h"
 
 int	atoc(const char *str)

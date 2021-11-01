@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarson <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 12:46:58 by aarson            #+#    #+#             */
-/*   Updated: 2021/10/24 12:47:00 by aarson           ###   ########.fr       */
+/*   Updated: 2021/11/01 12:21:36 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// #include "cub3d.h"
 #include "get_next_line.h"
 #include "libft.h"
+#include "parse.h"
 #include <stdio.h>
 
 void	valid_str_map(t_map *map, char *line, int *status)
@@ -110,6 +111,6 @@ int		fill_to_rectangle(t_map *map)
 	free_arr(map->map);
 	map->map = new;
 	map->size[0] = max;
-	map->size[1] = max;
+	map->size[1] = i;
 	return(1);
 }

@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   elem_func2.c                                       :+:      :+:    :+:   */
+/*   elem_func_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarson <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 15:52:58 by aarson            #+#    #+#             */
-/*   Updated: 2021/10/24 15:52:59 by aarson           ###   ########.fr       */
+/*   Updated: 2021/11/01 12:21:24 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// #include "cub3d.h"
 #include "get_next_line.h"
+#include "parse.h"
 #include "libft.h"
 
 void	no_func(t_map *map, int *status, char *path)

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   service.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarson <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 12:46:35 by aarson            #+#    #+#             */
-/*   Updated: 2021/10/24 12:46:37 by aarson           ###   ########.fr       */
+/*   Updated: 2021/11/01 12:21:43 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// #include "cub3d.h"
 #include "get_next_line.h"
 #include "libft.h"
+#include "parse.h"
 #include <stdio.h>
 
 int	init_map(t_map **map)

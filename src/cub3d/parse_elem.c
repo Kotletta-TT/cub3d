@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parse_elem.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarson <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 12:47:48 by aarson            #+#    #+#             */
-/*   Updated: 2021/10/24 12:47:50 by aarson           ###   ########.fr       */
+/*   Updated: 2021/11/01 12:21:29 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+// #include "cub3d.h"
 #include "get_next_line.h"
 #include "libft.h"
+#include "parse.h"
 #include <stdio.h>
 
 static void	init_arr_func(t_arr_func *func)

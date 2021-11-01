@@ -1,6 +1,7 @@
-#include "cub3d.h"
+// #include "cub3d.h"
 #include "get_next_line.h"
 #include "libft.h"
+#include "parse.h"
 #include <stdio.h>
 
 void	check_zeroes(char **map)

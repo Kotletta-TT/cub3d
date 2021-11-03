@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:54:24 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 13:48:17 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/03 21:27:59 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	destroy(t_cub *cub)
 {
 	mlx_destroy_window(cub->mlx, cub->window);
 	mlx_destroy_image(cub->mlx, cub->map3d->img);
-	// mlx_destroy_image(cub->mlx, cub->minimap->img);
 	mlx_destroy_image(cub->mlx, cub->textures[NORTH]);
 	mlx_destroy_image(cub->mlx, cub->textures[SOUTH]);
 	mlx_destroy_image(cub->mlx, cub->textures[WEST]);
@@ -66,23 +65,20 @@ int	key_released(int keycode, t_cub *cub)
 	return (0);
 }
 
-void	turn_event(t_cub *cub)
+/* int	mlx_mouse_move(mlx_win_list_t *win, int x, int y) */
+int	mouse_hook(int x, int y, t_cub *cub)
 {
-	const int	step = TURN_SPEED * (cub->angles->a5 / 10);
+	static int last_x;
 
-	if ((cub->turn_flags & T_LEFT) == T_LEFT
-		&& (cub->turn_flags & T_RIGHT) == T_RIGHT)
-		return ;
-	if ((cub->turn_flags & T_LEFT) == T_LEFT)
-		cub->map->player_dir = (cub->map->player_dir + step)
-			% cub->angles->a360;
-	else if ((cub->turn_flags & T_RIGHT) == T_RIGHT)
-	{
-		cub->map->player_dir -= step;
-		if (cub->map->player_dir < 0)
-			cub->map->player_dir = cub->angles->a360
-				+ cub->map->player_dir;
-	}
+	(void) y;
+	cub->map->player_dir += (last_x - x) * TURN_SPEED;
+	cub->map->player_dir = (cub->angles->a360 + cub->map->player_dir)
+		% cub->angles->a360;
+	printf("last_x: %i, x: %i, player_dir: %i\n", last_x, x, cub->map->player_dir);
+	last_x = x;
+	// if (cub->win_size[0] - x < 10)
+	// 	mlx_mouse_move(cub->win, cub->win_size[0] - 10, y);
+	return (0);
 }
 
 int	loop_hook(t_cub *cub)

@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:01:45 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 14:13:41 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/03 20:26:21 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_cub(t_cub *cub, t_map *map)
 	cub->map = map;
 	init_mlx(cub);
 	cub->map3d = new_map3d(cub->mlx, cub->win_size, cub->map->player);
-	cub->r_data = new_r_data(cub->win_size, cub->map3d->tile_size);
+	cub->r_data = new_r_data(cub);
 	cub->mov_flags = 0;
 	cub->turn_flags = 0;
 	cub->textures = init_textures(cub->mlx, &cub->map->resources);

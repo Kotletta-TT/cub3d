@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 14:00:58 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 14:04:00 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/03 20:30:34 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,13 @@ void	init_steps(t_values *vals, int i, float a, int tile_size)
 		vals->yA[i] = mabs(tile_size * vals->tan[i]);
 }
 
-void	fill_values(t_values *vals, int cnt, double angle, int tile_size)
+void	fill_values(t_values *vals, int cnt, double angle, t_cub *cub)
 {
 	int		i;
 	float	a;
+	int		step;
 
+	step = MOVE_SPEED * pow(2, cub->map3d->log - 4);
 	i = -1;
 	a = 0;
 	while (++i < cnt)
@@ -65,14 +67,14 @@ void	fill_values(t_values *vals, int cnt, double angle, int tile_size)
 		vals->tan[i] = tan(a);
 		vals->itan[i] = 1 / tan(a);
 		vals->fish[i] = mabs(vals->cos[i]);
-		init_steps(vals, i, a, tile_size);
+		init_steps(vals, i, a, cub->map3d->tile_size);
 		vals->m_stepX[i] = (int)mabs(round(16 * MOVE_SPEED * vals->cos[i]));
 		vals->m_stepY[i] = (int)mabs(round(16 * MOVE_SPEED * vals->sin[i]));
 		a += angle;
 	}
 }
 
-t_values	*init_values(int cnt, double angle, int tile_size)
+t_values	*init_values(int cnt, double angle, t_cub *cub)
 {
 	t_values	*vals;
 
@@ -94,25 +96,26 @@ t_values	*init_values(int cnt, double angle, int tile_size)
 		|| !vals->itan || !vals->fish || !vals->xA || !vals->yA
 		|| !vals->m_stepX || !vals->m_stepY)
 		ft_err("malloc failed\n");
-	fill_values(vals, cnt, to_radians(angle), tile_size);
+	fill_values(vals, cnt, to_radians(angle), cub);
 	return (vals);
 }
 
-t_render	*new_r_data(int win_size[2], int tile_size)
+t_render	*new_r_data(t_cub *cub)
 {
 	t_render	*r_data;
 
 	r_data = malloc(sizeof(t_render));
 	if (!r_data)
 		ft_err("malloc failed\n");
-	r_data->count = win_size[0];
-	r_data->cnt360 = win_size[0] * (360 / FOV);
-	r_data->dist_to_scrn = (win_size[0] >> 1) * 1.0 / tan(to_radians(FOV >> 1));
-	r_data->angle = (FOV * 1.0) / win_size[0];
-	r_data->rays = malloc(sizeof(t_ray) * win_size[0]);
+	r_data->count = cub->win_size[0];
+	r_data->cnt360 = cub->win_size[0] * (360 / FOV);
+	r_data->dist_to_scrn = (cub->win_size[0] >> 1) * 1.0
+		/ tan(to_radians(FOV >> 1));
+	r_data->angle = (FOV * 1.0) / cub->win_size[0];
+	r_data->rays = malloc(sizeof(t_ray) * cub->win_size[0]);
 	if (!r_data->rays)
 		ft_err("malloc failed\n");
-	r_data->values = init_values(win_size[0] * (360 / FOV), r_data->angle,
-			tile_size);
+	r_data->values = init_values(cub->win_size[0] * (360 / FOV), r_data->angle,
+			cub);
 	return (r_data);
 }

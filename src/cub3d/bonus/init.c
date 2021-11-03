@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:01:45 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 14:11:34 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/03 20:26:06 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,12 @@ t_map3d	*new_map3d(void *mlx, int *win_size, int raw_player[2])
 	return (map3d);
 }
 
-t_minimap	*new_minimap(void *mlx, int *win_size)
-{
-	t_minimap	*minimap;
-
-	minimap = malloc(sizeof(t_minimap));
-	if (!minimap)
-		ft_err("malloc failed\n");
-	minimap->tile_size = 1; //TODO: calculate tile_size
-	minimap->player_icon_radius = 2; //TODO: calc player icon radius
-	minimap->img = new_image(mlx, win_size, 0); //TODO: calculate img size
-	return (minimap);
-}
-
 void	init_cub(t_cub *cub, t_map *map)
 {
 	cub->map = map;
 	init_mlx(cub);
 	cub->map3d = new_map3d(cub->mlx, cub->win_size, cub->map->player);
-	cub->minimap = new_minimap(cub->mlx, cub->win_size);
-	cub->r_data = new_r_data(cub->win_size, cub->map3d->tile_size);
+	cub->r_data = new_r_data(cub);
 	cub->mov_flags = 0;
 	cub->turn_flags = 0;
 	cub->textures = init_textures(cub->mlx, &cub->map->resources);

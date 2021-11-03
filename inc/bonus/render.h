@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/03 15:18:21 by dgidget           #+#    #+#             */
+/*   Updated: 2021/11/03 19:33:12 by dgidget          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RENDER_H
 # define RENDER_H
 
@@ -17,13 +29,6 @@ typedef struct s_image
 	int				size_line;
 	int				is_big_endian;
 }	t_image;
-
-typedef struct s_minimap
-{
-	t_image	*img;
-	int		tile_size;
-	int		player_icon_radius;
-}	t_minimap;
 
 typedef struct s_map3d
 {
@@ -85,7 +90,6 @@ typedef struct s_cub
 	int			win_size[2];
 	t_map		*map;
 	t_map3d		*map3d;
-	t_minimap	*minimap;
 	t_render	*r_data;
 	int			mov_flags;
 	int			turn_flags;
@@ -95,6 +99,7 @@ typedef struct s_cub
 
 void	init_cub(t_cub *cub, t_map *map);
 void	draw(t_cub *cub);
+void	draw_minimap(t_cub *cub);
 void	start(t_map *map);
 void	ft_err(char *message);
 #endif

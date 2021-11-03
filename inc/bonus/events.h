@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:48:22 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 13:23:30 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/03 21:03:30 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	destroy(t_cub *cub);
 int	key_pressed(int keycode, t_cub *cub);
 int	key_released(int keycode, t_cub *cub);
 int	loop_hook(t_cub *cub);
+int	mouse_hook(int x, int y, t_cub *cub);
 
 #endif

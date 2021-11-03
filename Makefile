@@ -1,6 +1,6 @@
 NAME		=	cub3d
 
-INCLUDE_DIR	=	inc/mandatory
+INCLUDE_DIR	=	inc/bonus
 
 INCS		=	render.h		\
 				parse.h			\
@@ -15,7 +15,7 @@ INCS		=	render.h		\
 				
 HEADER		=	$(addprefix $(INCLUDE_DIR)/, $(INCS))
 
-SRC_DIR		=	src/cub3d/mandatory
+SRC_DIR		=	src/cub3d/bonus
 
 CFILES		=	parse.c				\
 				service.c			\
@@ -35,6 +35,7 @@ CFILES		=	parse.c				\
 				events.c			\
 				event_utils.c		\
 				utils.c				\
+				minimap.c			\
 				main.c
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(CFILES))
@@ -45,7 +46,7 @@ MLX_FLAGS	=	-framework OpenGL -framework AppKit -lmlx
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror# -O3
+CFLAGS		=	-Wall -Wextra -Werror -O3
 
 RM			=	rm -f
 
@@ -66,7 +67,7 @@ MLX			=	libmlx.a
 
 $(OBJS_DIR)%.o:		%.c $(HEADER)
 					@mkdir -p $(@D)
-					@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDE_DIR)
+					@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDE_DIR) -Iinc 
 
 all:				$(NAME)
 
@@ -80,7 +81,7 @@ $(MLX):
 					@make -C $(MLX_DIR)
 
 $(NAME):			$(GNL) $(LIBFT) $(OBJS) $(HEADER) $(MLX)
-					@$(CC) $(OBJS) -I $(INCLUDE_DIR) $(MLX_FLAGS) -lft -lgnl -L. -o $(NAME)
+					@$(CC) $(OBJS) -I $(INCLUDE_DIR) -Iinc $(MLX_FLAGS) -lft -lgnl -L. -o $(NAME)
 
 clean:
 					@make clean -C $(LIBFT_DIR)

@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:53:10 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 13:44:59 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/03 19:47:34 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	draw_wall(t_cub *cub, t_slice *slice)
 		vars.total += vars.step;
 		if (vars.total >= 1.)
 		{
-			vars.xpm_place += vars.xpm_size;
-			vars.total--;
+			vars.xpm_place += vars.xpm_size * (int)vars.total;
+			vars.total -= (int)vars.total;
 		}
 		i += map_img->size[0];
 	}
@@ -101,5 +101,5 @@ void	draw(t_cub *cub)
 		slice.x = i;
 		draw_slice(cub->map3d->img, &slice, cub);
 	}
-	mlx_put_image_to_window(cub->mlx, cub->window, cub->map3d->img->img, 0, 0);
+	draw_minimap(cub);
 }

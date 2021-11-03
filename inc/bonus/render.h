@@ -1,10 +1,8 @@
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef RENDER_H
+# define RENDER_H
 
 # include "mlx.h"
-# include <math.h>
 # include <stdio.h> //TODO: remove?
-# include <stdlib.h>
 # include "map.h"
 
 enum	e_texture {NORTH, SOUTH, WEST, EAST};
@@ -37,22 +35,22 @@ typedef struct s_map3d
 
 typedef struct s_ray
 {
-	double			len;
+	float			len;
 	int				offset;
 	enum e_texture	t_idx;
 }	t_ray;
 
 typedef struct s_values
 {
-	double	*sin;
-	double	*cos;
-	double	*isin;
-	double	*icos;
-	double	*tan;
-	double	*itan;
-	double	*fish;
-	double	*xA;
-	double	*yA;
+	float	*sin;
+	float	*cos;
+	float	*isin;
+	float	*icos;
+	float	*tan;
+	float	*itan;
+	float	*fish;
+	float	*xA;
+	float	*yA;
 	int		*m_stepX;
 	int		*m_stepY;
 }	t_values;
@@ -69,13 +67,13 @@ typedef struct s_angle
 	int	a5;
 	int	a45;
 }	t_angle;
+
 typedef struct s_render
 {
-	// float		res_ratio;
-	double		dist_to_scrn;
+	float		dist_to_scrn;
 	int			count;
 	int			cnt360;
-	double		angle;
+	float		angle;
 	t_ray		*rays;
 	t_values	*values;
 }	t_render;
@@ -91,22 +89,11 @@ typedef struct s_cub
 	t_render	*r_data;
 	int			mov_flags;
 	int			turn_flags;
-	t_image		*textures;
+	t_image		**textures;
 	t_angle		*angles;
 }	t_cub;
 
-double	to_radians(double degree);
-double	to_degrees(double radians);
 void	init_cub(t_cub *cub, t_map *map);
-int		is_facing_up(int angle, t_angle *a);
-int		is_facing_left(int angle, t_angle *a);
-double	mabs(double n);
-void	cast_rays(t_cub *cub);
-int		destroy(t_cub *cub);
-int		key_hook(int keycode, t_cub *cub);
-int		key_pressed(int keycode, t_cub *cub);
-int		key_released(int keycode, t_cub *cub);
-int		loop_hook(t_cub *cub);
 void	draw(t_cub *cub);
 void	start(t_map *map);
 void	ft_err(char *message);

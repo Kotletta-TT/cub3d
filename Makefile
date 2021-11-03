@@ -1,12 +1,21 @@
 NAME		=	cub3d
 
-INCLUDE_DIR	=	inc
+INCLUDE_DIR	=	inc/mandatory
 
-INCS		=	render.h parse.h events.h settings.h map.h events.h
-
+INCS		=	render.h		\
+				parse.h			\
+				events.h		\
+				draw.h			\
+				draw_utils.h	\
+				settings.h		\
+				map.h			\
+				event_utils.h	\
+				utils.h			\
+				init_r_data.h
+				
 HEADER		=	$(addprefix $(INCLUDE_DIR)/, $(INCS))
 
-SRC_DIR		=	src/cub3d
+SRC_DIR		=	src/cub3d/mandatory
 
 CFILES		=	parse.c				\
 				service.c			\
@@ -17,9 +26,14 @@ CFILES		=	parse.c				\
 				parse_map_check.c	\
 				start.c				\
 				init.c				\
+				init_utils.c		\
+				init_r_data.c		\
 				cast.c				\
+				cast_utils.c		\
 				draw.c				\
+				draw_utils.c		\
 				events.c			\
+				event_utils.c		\
 				utils.c				\
 				main.c
 
@@ -31,7 +45,7 @@ MLX_FLAGS	=	-framework OpenGL -framework AppKit -lmlx
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -O3
+CFLAGS		=	-Wall -Wextra -Werror# -O3
 
 RM			=	rm -f
 

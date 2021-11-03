@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/03 12:50:55 by dgidget           #+#    #+#             */
+/*   Updated: 2021/11/03 12:50:56 by dgidget          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSE_H
 # define PARSE_H
 
-#include "map.h"
+# include "map.h"
 
 # define FLOOR   1
 # define CEILING 2
@@ -18,7 +30,7 @@ typedef struct s_arr_func
 	void	(*f)(t_map *, int *, char *);
 }	t_arr_func;
 
-int 	init_map(t_map **map);
+int		init_map(t_map **map);
 void	ft_err(char *message);
 int		check_open(char *path);
 int		check_ext(char *path, char *ext);

@@ -36,11 +36,14 @@ int	atoc(const char *str)
 int	valid_color(char *str)
 {
 	char	**arr;
+	int		res;
 
 	arr = ft_split(str, ',');
 	if (!arr || len_arr(arr) != 3)
 		ft_err("Parse color error");
-	return ((atoc(arr[0]) << 16) + (atoc(arr[1]) << 8) + atoc(arr[2]));
+	res = (atoc(arr[0]) << 16) + (atoc(arr[1]) << 8) + atoc(arr[2]);
+	free_arr(arr);
+	return (res);
 }
 
 void	floor_func(t_map *map, int *status, char *path)

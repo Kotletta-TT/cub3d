@@ -68,6 +68,7 @@ void	parse_string(t_map *map, char *line, int *status)
 		else
 		{
 			valid_elem_str(map, line, status);
+			free_names(names);
 			return ;
 		}
 	}

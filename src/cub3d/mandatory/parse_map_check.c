@@ -51,6 +51,7 @@ void	check_player_availability(t_map *map)
 			{
 				check_correct_pos(map->map, x, y);
 				get_player_pos(map, x, y, map->map[y][x]);
+				free(player_type);
 				return ;
 			}
 		}

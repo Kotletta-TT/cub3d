@@ -4,3 +4,4 @@
 .DS_Store
 *.sw?
 cub3d
+!src/cub3d

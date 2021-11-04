@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:50:55 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 12:50:56 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 18:12:15 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ void	check_player_availability(t_map *map);
 void	check_zeroes(char **map);
 void	get_player_pos(t_map *map, int x, int y, char dir);
 int		fill_to_rectangle(t_map *map);
+int		find_max_str(char **arr);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 12:46:58 by aarson            #+#    #+#             */
-/*   Updated: 2021/11/04 16:28:20 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 18:13:36 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,6 @@ int	valid_map(t_map *map)
 	check_player_availability(map);
 	check_zeroes(map->map);
 	return (1);
-}
-
-int	find_max_str(char **arr)
-{
-	int	i;
-	int	tmp;
-
-	i = -1;
-	tmp = 0;
-	while (arr[++i])
-		if (tmp < (int)(ft_strlen(arr[i])))
-			tmp = ft_strlen(arr[i]);
-	return (tmp);
 }
 
 char	**get_arr_place(t_map *map, int max)

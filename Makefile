@@ -28,6 +28,7 @@ CFILES		=	parse.c				\
 				elem_func_color.c	\
 				elem_func_texture.c	\
 				parse_map.c			\
+				parse_map_utils.c	\
 				parse_elem.c		\
 				parse_map_check.c	\
 				start.c				\
@@ -48,6 +49,7 @@ CFILES_B	=	parse.c				\
 				elem_func_color.c	\
 				elem_func_texture.c	\
 				parse_map.c			\
+				parse_map_utils.c	\
 				parse_elem.c		\
 				parse_map_check.c	\
 				start.c				\
@@ -68,7 +70,9 @@ SRCS		=	$(addprefix $(SRC_DIR)/$(MANDTR_DIR)/, $(CFILES))
 
 SRCS_B		=	$(addprefix $(SRC_DIR)/$(BONUS_DIR)/, $(CFILES_B))
 				
-OBJS_DIR	=	objects/cub3d/
+OBJS_DIR	=	objects/cub3d/mandatory/
+
+OBJS_DIR_B	=	objects/cub3d/bonus/
 
 MLX_FLAGS	=	-framework OpenGL -framework AppKit -lmlx
 
@@ -80,7 +84,7 @@ RM			=	rm -f
 
 OBJS		=	$(addprefix $(OBJS_DIR), $(SRCS:c=o))
 
-OBJS_B		=	$(addprefix $(OBJS_DIR), $(SRCS_B:c=o))
+OBJS_B		=	$(addprefix $(OBJS_DIR_B), $(SRCS_B:c=o))
 
 LIBFT_DIR	=	src/libft
 
@@ -95,7 +99,11 @@ MLX_DIR		=	src/mlx
 MLX			=	libmlx.a
 
 
-$(OBJS_DIR)%.o:		%.c $(HEADER_B)
+$(OBJS_DIR)%.o:		%.c $(HEADER)
+					@mkdir -p $(@D)
+					$(CC) $(CFLAGS) -c $< -o $@ -I$(INCLUDE_DIR)/$(MANDTR_DIR) -Iinc -I$(MLX_DIR)
+
+$(OBJS_DIR_B)%.o:	%.c $(HEADER_B)
 					@mkdir -p $(@D)
 					$(CC) $(CFLAGS) -c $< -o $@ -I$(INCLUDE_DIR)/$(BONUS_DIR) -Iinc -I$(MLX_DIR)
 

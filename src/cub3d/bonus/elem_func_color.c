@@ -28,7 +28,7 @@ int	atoc(const char *str)
 		res = res * 10 + (*str - '0');
 		str++;
 	}
-	if (!flag || res > 255)
+	if (!flag || res > 255 || *str)
 		ft_err("Number collor incorrect");
 	return (res);
 }

@@ -86,6 +86,8 @@ int	parse_map(t_map *map, char *path)
 	line = 0;
 	open_file(path, &fd);
 	i = get_next_line(fd, &line);
+	if (i < 0)
+		ft_err("Not valid file");
 	while (i > 0)
 	{
 		parse_string(map, line, &status);

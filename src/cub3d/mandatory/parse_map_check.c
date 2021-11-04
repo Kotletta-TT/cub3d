@@ -1,4 +1,15 @@
-// #include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map_check.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/04 16:26:10 by dgidget           #+#    #+#             */
+/*   Updated: 2021/11/04 16:27:00 by dgidget          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 #include "libft.h"
 #include "parse.h"
@@ -13,7 +24,7 @@ void	check_zeroes(char **map)
 	while (map[++i])
 	{
 		k = -1;
-		while(map[i][++k])
+		while (map[i][++k])
 		{
 			if (map[i][k] == '0')
 				check_correct_pos(map, k, i);
@@ -39,7 +50,7 @@ void	check_player_availability(t_map *map)
 			if (ft_strchr(player_type, map->map[y][x]))
 			{
 				check_correct_pos(map->map, x, y);
-				get_player_pos(map, x, y,  map->map[y][x]);
+				get_player_pos(map, x, y, map->map[y][x]);
 				return ;
 			}
 		}

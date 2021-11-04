@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:49:00 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 21:11:08 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:19:56 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	try_move(t_cub *cub, int angle, int wall_dist, const int *player_old)
 			cub->map3d->player[1] - wall_dist, angle))
 		cub->map3d->player[1] = player_old[1];
 	else if (is_wall(cub, cub->map3d->player[0],
-		cub->map3d->player[1] + wall_dist, angle))
+			cub->map3d->player[1] + wall_dist, angle))
 		cub->map3d->player[1] = player_old[1];
 }
 
@@ -105,22 +105,3 @@ void	turn_event(t_cub *cub)
 				+ cub->map->player_dir;
 	}
 }
-
-/* void	turn_event_mouse(t_cub *cub, int change)
-{
-	const int	step = TURN_SPEED * (cub->angles->a5 / 10);
-
-	if ((cub->turn_flags & T_LEFT) == T_LEFT
-		&& (cub->turn_flags & T_RIGHT) == T_RIGHT)
-		return ;
-	if ((cub->turn_flags & T_LEFT) == T_LEFT)
-		cub->map->player_dir = (cub->map->player_dir + step)
-			% cub->angles->a360;
-	else if ((cub->turn_flags & T_RIGHT) == T_RIGHT)
-	{
-		cub->map->player_dir -= step;
-		if (cub->map->player_dir < 0)
-			cub->map->player_dir = cub->angles->a360
-				+ cub->map->player_dir;
-	}
-} */

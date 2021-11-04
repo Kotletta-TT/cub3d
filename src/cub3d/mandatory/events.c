@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:54:24 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 14:14:54 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 17:24:00 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "utils.h"
 #include "cast.h"
 #include "event_utils.h"
+#include "mlx.h"
 
 int	destroy(t_cub *cub)
 {

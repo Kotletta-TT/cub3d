@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:01:45 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 20:26:06 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:20:39 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ t_map3d	*new_map3d(void *mlx, int *win_size, int raw_player[2])
 	return (map3d);
 }
 
+int	get_mouse_pos(void *window)
+{
+	int	x;
+	int	y;
+
+	mlx_mouse_get_pos(window, &x, &y);
+	return (x);
+}
+
 void	init_cub(t_cub *cub, t_map *map)
 {
 	cub->map = map;
@@ -68,4 +77,5 @@ void	init_cub(t_cub *cub, t_map *map)
 	cub->textures = init_textures(cub->mlx, &cub->map->resources);
 	cub->angles = init_angles(cub->win_size[0]);
 	init_player_dir(&cub->map->player_dir, cub->angles);
+	cub->last_x = get_mouse_pos(cub->window);
 }

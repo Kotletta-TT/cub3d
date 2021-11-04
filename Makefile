@@ -1,6 +1,10 @@
 NAME		=	cub3d
 
-INCLUDE_DIR	=	inc/bonus
+INCLUDE_DIR	=	inc
+
+BONUS_DIR	= 	bonus
+
+MANDTR_DIR	=	mandatory
 
 INCS		=	render.h		\
 				parse.h			\
@@ -13,11 +17,33 @@ INCS		=	render.h		\
 				utils.h			\
 				init_r_data.h
 				
-HEADER		=	$(addprefix $(INCLUDE_DIR)/, $(INCS))
+HEADER		=	$(addprefix $(INCLUDE_DIR)/$(MANDTR_DIR)/, $(INCS))
 
-SRC_DIR		=	src/cub3d/bonus
+HEADER_B	=	$(addprefix $(INCLUDE_DIR)/$(BONUS_DIR)/, $(INCS))
+
+SRC_DIR		=	src/cub3d
 
 CFILES		=	parse.c				\
+				service.c			\
+				elem_func_color.c	\
+				elem_func_texture.c	\
+				parse_map.c			\
+				parse_elem.c		\
+				parse_map_check.c	\
+				start.c				\
+				init.c				\
+				init_utils.c		\
+				init_r_data.c		\
+				cast.c				\
+				cast_utils.c		\
+				draw.c				\
+				draw_utils.c		\
+				events.c			\
+				event_utils.c		\
+				utils.c				\
+				main.c
+
+CFILES_B	=	parse.c				\
 				service.c			\
 				elem_func_color.c	\
 				elem_func_texture.c	\
@@ -38,7 +64,9 @@ CFILES		=	parse.c				\
 				minimap.c			\
 				main.c
 
-SRCS		=	$(addprefix $(SRC_DIR)/, $(CFILES))
+SRCS		=	$(addprefix $(SRC_DIR)/$(MANDTR_DIR)/, $(CFILES))
+
+SRCS_B		=	$(addprefix $(SRC_DIR)/$(BONUS_DIR)/, $(CFILES_B))
 				
 OBJS_DIR	=	objects/cub3d/
 
@@ -51,6 +79,8 @@ CFLAGS		=	-Wall -Wextra -Werror -O3
 RM			=	rm -f
 
 OBJS		=	$(addprefix $(OBJS_DIR), $(SRCS:c=o))
+
+OBJS_B		=	$(addprefix $(OBJS_DIR), $(SRCS_B:c=o))
 
 LIBFT_DIR	=	src/libft
 
@@ -65,34 +95,38 @@ MLX_DIR		=	src/mlx
 MLX			=	libmlx.a
 
 
-$(OBJS_DIR)%.o:		%.c $(HEADER)
+$(OBJS_DIR)%.o:		%.c $(HEADER_B)
 					@mkdir -p $(@D)
-					@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDE_DIR) -Iinc 
+					$(CC) $(CFLAGS) -c $< -o $@ -I$(INCLUDE_DIR)/$(BONUS_DIR) -Iinc -I$(MLX_DIR)
 
 all:				$(NAME)
 
 $(GNL):
-					@make -C $(GNL_DIR)
+					make -C $(GNL_DIR)
 
 $(LIBFT):
-					@make -C $(LIBFT_DIR)
+					make -C $(LIBFT_DIR)
 
 $(MLX):
-					@make -C $(MLX_DIR)
+					make -C $(MLX_DIR)
 
-$(NAME):			$(GNL) $(LIBFT) $(OBJS) $(HEADER) $(MLX)
-					@$(CC) $(OBJS) -I $(INCLUDE_DIR) -Iinc $(MLX_FLAGS) -lft -lgnl -L. -o $(NAME)
+$(NAME):			$(GNL) $(LIBFT) $(OBJS) $(HEADER_B) $(MLX)
+					$(CC) $(OBJS) $(MLX_FLAGS) -lft -lgnl -L. -Lsrc/mlx -o $(NAME)
+
+bonus:				$(GNL) $(LIBFT) $(OBJS_B) $(HEADER_B) $(MLX)
+					$(CC) $(OBJS_B) $(MLX_FLAGS) -lft -lgnl -L. -Lsrc/mlx -o $(NAME)
 
 clean:
-					@make clean -C $(LIBFT_DIR)
-					@make clean -C $(GNL_DIR)
-					@$(RM) $(OBJS)
+					make clean -C $(LIBFT_DIR)
+					make clean -C $(GNL_DIR)
+					$(RM) $(OBJS)
+					$(RM) $(OBJS_B)
 
 fclean: 			clean
-					@make fclean -C $(LIBFT_DIR)
-					@make fclean -C $(GNL_DIR)
-					@$(RM) $(NAME)
+					make fclean -C $(LIBFT_DIR)
+					make fclean -C $(GNL_DIR)
+					$(RM) $(NAME)
 
-re: 				clean all
+re: 				fclean all
 
 .PHONY: 			all clean fclean re

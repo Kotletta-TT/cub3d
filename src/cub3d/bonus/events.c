@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:54:24 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 21:27:59 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:31:39 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "utils.h"
 #include "cast.h"
 #include "event_utils.h"
+#include "mlx.h"
 
 int	destroy(t_cub *cub)
 {
@@ -65,19 +66,27 @@ int	key_released(int keycode, t_cub *cub)
 	return (0);
 }
 
-/* int	mlx_mouse_move(mlx_win_list_t *win, int x, int y) */
 int	mouse_hook(int x, int y, t_cub *cub)
 {
-	static int last_x;
-
 	(void) y;
-	cub->map->player_dir += (last_x - x) * TURN_SPEED;
+	if (cub->last_x > cub->win_size[0] - R_OFFSET)
+	{
+		cub->last_x = R_OFFSET;
+		x = cub->last_x;
+	}
+	else if (cub->last_x && cub->last_x < R_OFFSET)
+	{
+		cub->last_x = cub->win_size[0] - R_OFFSET;
+		x = cub->last_x;
+	}
+	if (x > 0 && cub->win_size[0] - x < R_OFFSET)
+		mlx_mouse_move(cub->window, R_OFFSET, y);
+	else if (x < R_OFFSET)
+		mlx_mouse_move(cub->window, cub->win_size[0] - R_OFFSET, y);
+	cub->map->player_dir += (cub->last_x - x) * TURN_SPEED;
 	cub->map->player_dir = (cub->angles->a360 + cub->map->player_dir)
 		% cub->angles->a360;
-	printf("last_x: %i, x: %i, player_dir: %i\n", last_x, x, cub->map->player_dir);
-	last_x = x;
-	// if (cub->win_size[0] - x < 10)
-	// 	mlx_mouse_move(cub->win, cub->win_size[0] - 10, y);
+	cub->last_x = x;
 	return (0);
 }
 

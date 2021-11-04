@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:50:41 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 20:31:56 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:10:59 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define FOV 			60
 
-# define TURN_SPEED		4
+# define TURN_SPEED		2
 # define MOVE_SPEED		2
 
 #endif

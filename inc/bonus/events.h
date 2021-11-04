@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:48:22 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 21:03:30 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 15:37:13 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # define T_LEFT			0x1
 # define T_RIGHT		0x2
+
+# define R_OFFSET		10
 
 enum	e_button
 {

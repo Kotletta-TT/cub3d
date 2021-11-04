@@ -6,14 +6,13 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 15:18:21 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 19:33:12 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:31:35 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
 # define RENDER_H
 
-# include "mlx.h"
 # include <stdio.h> //TODO: remove?
 # include "map.h"
 
@@ -91,10 +90,11 @@ typedef struct s_cub
 	t_map		*map;
 	t_map3d		*map3d;
 	t_render	*r_data;
-	int			mov_flags;
-	int			turn_flags;
 	t_image		**textures;
 	t_angle		*angles;
+	int			mov_flags;
+	int			turn_flags;
+	int			last_x;
 }	t_cub;
 
 void	init_cub(t_cub *cub, t_map *map);
@@ -102,4 +102,5 @@ void	draw(t_cub *cub);
 void	draw_minimap(t_cub *cub);
 void	start(t_map *map);
 void	ft_err(char *message);
+
 #endif

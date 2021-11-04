@@ -6,7 +6,7 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 12:53:10 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 19:49:52 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 17:23:49 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "math.h"
 #include "draw.h"
 #include "draw_utils.h"
+#include "mlx.h"
 
 void	draw_wall(t_cub *cub, t_slice *slice)
 {

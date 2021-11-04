@@ -6,11 +6,12 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 13:01:42 by dgidget           #+#    #+#             */
-/*   Updated: 2021/11/03 14:14:01 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 17:23:32 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+#include "mlx.h"
 #include "events.h"
 #include "cast.h"
 

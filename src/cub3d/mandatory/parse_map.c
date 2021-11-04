@@ -6,15 +6,13 @@
 /*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 12:46:58 by aarson            #+#    #+#             */
-/*   Updated: 2021/11/01 12:21:36 by dgidget          ###   ########.fr       */
+/*   Updated: 2021/11/04 16:28:20 by dgidget          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "cub3d.h"
 #include "get_next_line.h"
 #include "libft.h"
 #include "parse.h"
-#include <stdio.h>
 
 void	valid_str_map(t_map *map, char *line, int *status)
 {
@@ -58,10 +56,10 @@ int	valid_map(t_map *map)
 	check_outer_borders(map->map);
 	check_player_availability(map);
 	check_zeroes(map->map);
-	return(1);
+	return (1);
 }
 
-int		find_max_str(char **arr)
+int	find_max_str(char **arr)
 {
 	int	i;
 	int	tmp;
@@ -92,7 +90,7 @@ char	**get_arr_place(t_map *map, int max)
 	return (new);
 }
 
-int		fill_to_rectangle(t_map *map)
+int	fill_to_rectangle(t_map *map)
 {
 	int		max;
 	int		i;
@@ -105,12 +103,12 @@ int		fill_to_rectangle(t_map *map)
 	{
 		ft_memcpy(new[i], map->map[i], ft_strlen(map->map[i]));
 		ft_memset(&(new[i][ft_strlen(map->map[i])]), '0',
-		max - ft_strlen(map->map[i]));
+			max - ft_strlen(map->map[i]));
 	}
 	new[i] = 0;
 	free_arr(map->map);
 	map->map = new;
 	map->size[0] = max;
 	map->size[1] = i;
-	return(1);
+	return (1);
 }

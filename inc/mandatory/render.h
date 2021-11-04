@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dgidget <dgidget@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/04 16:29:08 by dgidget           #+#    #+#             */
+/*   Updated: 2021/11/04 16:29:09 by dgidget          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RENDER_H
 # define RENDER_H
 
 # include "mlx.h"
-# include <stdio.h> //TODO: remove?
 # include "map.h"
 
 enum	e_texture {NORTH, SOUTH, WEST, EAST};

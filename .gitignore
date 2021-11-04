@@ -5,3 +5,5 @@
 *.sw?
 cub3d
 !src/cub3d
+bonus
+!src/*/bonus

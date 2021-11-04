@@ -96,7 +96,7 @@ GNL			=	libgnl.a
 
 MLX_DIR		=	src/mlx
 
-MLX			=	libmlx.a
+MLX			=	$(MLX_DIR)/libmlx.a
 
 
 $(OBJS_DIR)%.o:		%.c $(HEADER)
@@ -107,7 +107,14 @@ $(OBJS_DIR_B)%.o:	%.c $(HEADER_B)
 					@mkdir -p $(@D)
 					$(CC) $(CFLAGS) -c $< -o $@ -I$(INCLUDE_DIR)/$(BONUS_DIR) -Iinc -I$(MLX_DIR)
 
+$(NAME):			$(GNL) $(LIBFT) $(OBJS) $(HEADER_B) $(MLX)
+					$(CC) $(OBJS) $(MLX_FLAGS) -lft -lgnl -L. -Lsrc/mlx -o $@
+
 all:				$(NAME)
+
+bonus:				$(GNL) $(LIBFT) $(OBJS_B) $(HEADER_B) $(MLX)
+					$(CC) $(OBJS_B) $(MLX_FLAGS) -lft -lgnl -L. -Lsrc/mlx -o $@
+					@cp bonus $(NAME)
 
 $(GNL):
 					make -C $(GNL_DIR)
@@ -118,12 +125,6 @@ $(LIBFT):
 $(MLX):
 					make -C $(MLX_DIR)
 
-$(NAME):			$(GNL) $(LIBFT) $(OBJS) $(HEADER_B) $(MLX)
-					$(CC) $(OBJS) $(MLX_FLAGS) -lft -lgnl -L. -Lsrc/mlx -o $(NAME)
-
-bonus:				$(GNL) $(LIBFT) $(OBJS_B) $(HEADER_B) $(MLX)
-					$(CC) $(OBJS_B) $(MLX_FLAGS) -lft -lgnl -L. -Lsrc/mlx -o $(NAME)
-
 clean:
 					make clean -C $(LIBFT_DIR)
 					make clean -C $(GNL_DIR)
@@ -133,6 +134,7 @@ clean:
 fclean: 			clean
 					make fclean -C $(LIBFT_DIR)
 					make fclean -C $(GNL_DIR)
+					@$(RM) bonus
 					$(RM) $(NAME)
 
 re: 				fclean all
